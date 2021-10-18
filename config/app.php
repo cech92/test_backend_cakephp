@@ -332,9 +332,9 @@ return [
         // /*
         //  * The test connection is used during the test suite.
         //  */
-        // 'test' => [
-        //     'className' => Connection::class,
-        //     'driver' => Mysql::class,
+        'test' => [
+            'className' => Connection::class,
+            'driver' => Sqlite::class,
         //     'persistent' => false,
         //     'timezone' => 'UTC',
         //     //'encoding' => 'utf8mb4',
@@ -343,7 +343,7 @@ return [
         //     'quoteIdentifiers' => false,
         //     'log' => false,
         //     //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
-        // ],
+        ],
     ],
 
     /*

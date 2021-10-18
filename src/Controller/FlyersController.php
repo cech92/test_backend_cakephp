@@ -74,8 +74,7 @@ class FlyersController extends AppController {
         return $this->responseBuilder->returnSuccessList($results);
     }
 
-    public function view($id)
-    {
+    public function view($id) {
         $fields_query = $this->request->getQuery('fields', '');
 
         $file = fopen(ROOT . "/resources/flyers_data.csv", "r");

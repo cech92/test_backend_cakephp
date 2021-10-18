@@ -7,5 +7,5 @@ services:
     volumes:
       - .:/var/www/html/
     environment:
-      - SECURITY_SALT=ashjg23697sds97139871298ashk
+      - SECURITY_SALT=01gr45a96a452ef4374ab285f32a27e20b9a98a7f5fgb65b34adc7543dae220d
 

@@ -47,6 +47,9 @@ php -r "unlink('composer-setup.php');"
 1. Install docker and docker-compose
 2. Run with `docker-compose up`
 
+### Possible issues
+In case of `Missing Datasource` error, remove the datasource content from `config/app_local.php`.
+
 ## Testing
 If you are using Docker, run: `docker-compose run cakephp vendor/bin/phpunit`.\
 If you are in a local environment, run: `vendor/bin/phpunit`.

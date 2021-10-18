@@ -1,0 +1,11 @@
+version: '3'
+services:
+  cakephp:
+    build: .
+    ports:
+      - "4000:80"
+    volumes:
+      - .:/var/www/html/
+    environment:
+      - SECURITY_SALT=ashjg23697sds97139871298ashk
+

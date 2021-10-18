@@ -1,0 +1,78 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: SwaggerBake - A MixerAPI Project
+  description: |
+    For documentation please review the project [README](https://github.com/cnizzardini/cakephp-swagger-bake) and for
+    other great API related packages checkout [MixerAPI](http://mixerapi.com). To change this text edit your
+    `swagger.yaml` file.
+  license:
+    name: YOUR-LICENSE-HERE
+servers:
+  - url: /
+paths:
+
+definitions:
+
+components:
+  schemas:
+    Exception:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 500
+        url:
+          type: string
+          example: /url/path
+        message:
+          type: string
+          example: Internal Error
+      xml:
+        name: response
+    OperationResult:
+      type: object
+      properties:
+        result:
+          type: boolean
+      xml:
+        name: response
+x-swagger-bake:
+  components:
+    schemas:
+      Generic-Collection:
+        type: object
+        x-data-element: data
+        properties:
+          collection:
+            type: object
+            properties:
+              url:
+                type: string
+                format: url
+                example: /index
+              count:
+                type: integer
+                example: 20
+              total:
+                type: integer
+                example: 200
+              pages:
+                type: integer
+                example: 10
+              next:
+                type: string
+                format: url
+                example: /index?page=:number
+              prev:
+                type: string
+                format: url
+                example: /index?page=:number
+              first:
+                type: string
+                format: url
+                example: /index
+              last:
+                type: string
+                format: url
+                example: /index?page=:number

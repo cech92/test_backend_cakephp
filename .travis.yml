@@ -18,4 +18,4 @@ jobs:
       script: 
         - travis_retry composer self-update
         - travis_retry composer install --prefer-source --no-interaction
-        - vendor/bin/phpunit
+        - docker-compose run cakephp vendor/bin/phpunit

@@ -3,17 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller\Component;
 
-use Cake\Core\Configure;
-use Cake\Http\Exception\ForbiddenException;
-use Cake\Http\Exception\NotFoundException;
-use Cake\Http\Response;
-use Cake\View\Exception\MissingTemplateException;
-use Cake\Error\Debugger;
 use Cake\Utility\Hash;
-use Cake\Utility\Set;
-use App\Model\Entity\Flyer;
-use App\Model\Table\FlyersTable;
-use Cake\ORM\TableRegistry;
 
 
 class ApiHelper {
@@ -58,7 +48,7 @@ class ApiHelper {
 
     public function applyFields($fields, $keys) {
         foreach($keys as $key) {
-            if (in_array($key, $fields) !== true) 
+            if (in_array($key, $fields) !== true)
                 $this->arr = Hash::remove($this->arr, '{*}.' . $key);
         }
     }

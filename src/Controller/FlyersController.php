@@ -3,14 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Cake\Core\Configure;
-use Cake\Http\Exception\ForbiddenException;
-use Cake\Http\Exception\NotFoundException;
-use Cake\Http\Response;
-use Cake\View\Exception\MissingTemplateException;
-use Cake\Error\Debugger;
-use Cake\Utility\Hash;
-use Cake\ORM\TableRegistry;
 use App\Controller\Component\ApiHelper;
 use App\Controller\Component\ResponseBuilder;
 
@@ -38,8 +30,7 @@ class FlyersController extends AppController {
         $limit = $this->helper->checkValue($limit_query, 100);
 
         $file = fopen(ROOT . "/resources/flyers_data.csv", "r");
-        
-        $keys = fgetcsv($file, "1000", ",");
+        $keys = fgetcsv($file, null, ",");
 
         if ($fields_query !== '') {
             $check_fields = $this->helper->checkFields(explode(',', $fields_query), $keys);
@@ -56,9 +47,9 @@ class FlyersController extends AppController {
                 return $this->responseBuilder->returnError400($debug);
             }
         }
-        
+
         $results = array();
-        while (($line = fgetcsv($file, "1000", ",")) !== FALSE) {
+        while (($line = fgetcsv($file, null, ",")) !== FALSE) {
             if ($line[2] <= $this->today && $this->today <= $line[3]) {
                 $results[] = array_combine($keys, $line);
             }
@@ -88,7 +79,7 @@ class FlyersController extends AppController {
         $fields_query = $this->request->getQuery('fields', '');
 
         $file = fopen(ROOT . "/resources/flyers_data.csv", "r");
-        $keys = fgetcsv($file, "1000", ",");
+        $keys = fgetcsv($file, null, ",");
 
         if ($fields_query !== '') {
             $check_fields = $this->helper->checkFields(explode(',', $fields_query), $keys);
@@ -99,7 +90,7 @@ class FlyersController extends AppController {
         }
 
         $results = [];
-        while (($line = fgetcsv($file, "1000", ",")) !== FALSE) {
+        while (($line = fgetcsv($file, null, ",")) !== FALSE) {
             if ($line[0] == $id) {
                 $results[] = array_combine($keys, $line);
                 break;

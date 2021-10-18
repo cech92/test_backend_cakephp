@@ -47,7 +47,7 @@ class FlyersControllerTest extends TestCase {
         $this->assertResponseContains("results");
     }
 
-    public function testGetFlyerompleteQuery() {
+    public function testGetFlyerCompleteQuery() {
         $this->get('/flyers/2.json?fields=title,category');
         $this->assertResponseCode(200);
         $this->assertResponseContains("results");

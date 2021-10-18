@@ -7,12 +7,15 @@ php:
 
 services:
   - docker
+
 jobs:
   include:
     - stage: "Tests"                
-      name: "Unit Test PHP"  
-      script: 
-      - travis_retry composer self-update
-      - travis_retry composer install --prefer-source --no-interaction
-      - vendor/bin/phpunit
+      name: "Unit Test PHP"
+      before_script:
+        - chmod -R 755 resources/
 
+      script: 
+        - travis_retry composer self-update
+        - travis_retry composer install --prefer-source --no-interaction
+        - vendor/bin/phpunit
